@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.jk.dao.UserMapper" >
+  <resultMap id="BaseResultMap" type="com.jk.pojo.User" >
+    <id column="userid" property="userid" jdbcType="INTEGER" />
+    <result column="username" property="username" jdbcType="VARCHAR" />
+    <result column="userpwd" property="userpwd" jdbcType="VARCHAR" />
+    <result column="userphone" property="userphone" jdbcType="VARCHAR" />
+    <result column="userneirong" property="userneirong" jdbcType="VARCHAR" />
+    <result column="logindate" property="logindate" jdbcType="DATE" />
+    <result column="zhanghaostatu" property="zhanghaostatu" jdbcType="INTEGER" />
+    <result column="liulanqi" property="liulanqi" jdbcType="VARCHAR" />
+    <result column="updatexitong" property="updatexitong" jdbcType="VARCHAR" />
+    <result column="caozuoxiangqing" property="caozuoxiangqing" jdbcType="VARCHAR" />
+    <result column="rizhinumber" property="rizhinumber" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    userid, username, userpwd, userphone, userneirong, logindate, zhanghaostatu, liulanqi, 
+    updatexitong, caozuoxiangqing, rizhinumber
+  </sql>
+
+  <select id="selectAll" resultMap="BaseResultMap">
+    select * from x_user
+  </select>
+
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from x_user
+    where userid = #{userid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from x_user
+    where userid = #{userid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.jk.pojo.User" >
+    insert into x_user (userid, username, userpwd, 
+      userphone, userneirong, logindate, 
+      zhanghaostatu, liulanqi, updatexitong, 
+      caozuoxiangqing, rizhinumber)
+    values (#{userid,jdbcType=INTEGER}, #{username,jdbcType=VARCHAR}, #{userpwd,jdbcType=VARCHAR}, 
+      #{userphone,jdbcType=VARCHAR}, #{userneirong,jdbcType=VARCHAR}, #{logindate,jdbcType=DATE}, 
+      #{zhanghaostatu,jdbcType=INTEGER}, #{liulanqi,jdbcType=VARCHAR}, #{updatexitong,jdbcType=VARCHAR}, 
+      #{caozuoxiangqing,jdbcType=VARCHAR}, #{rizhinumber,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.jk.pojo.User" >
+    insert into x_user
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="userid != null" >
+        userid,
+      </if>
+      <if test="username != null" >
+        username,
+      </if>
+      <if test="userpwd != null" >
+        userpwd,
+      </if>
+      <if test="userphone != null" >
+        userphone,
+      </if>
+      <if test="userneirong != null" >
+        userneirong,
+      </if>
+      <if test="logindate != null" >
+        logindate,
+      </if>
+      <if test="zhanghaostatu != null" >
+        zhanghaostatu,
+      </if>
+      <if test="liulanqi != null" >
+        liulanqi,
+      </if>
+      <if test="updatexitong != null" >
+        updatexitong,
+      </if>
+      <if test="caozuoxiangqing != null" >
+        caozuoxiangqing,
+      </if>
+      <if test="rizhinumber != null" >
+        rizhinumber,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="userid != null" >
+        #{userid,jdbcType=INTEGER},
+      </if>
+      <if test="username != null" >
+        #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="userpwd != null" >
+        #{userpwd,jdbcType=VARCHAR},
+      </if>
+      <if test="userphone != null" >
+        #{userphone,jdbcType=VARCHAR},
+      </if>
+      <if test="userneirong != null" >
+        #{userneirong,jdbcType=VARCHAR},
+      </if>
+      <if test="logindate != null" >
+        #{logindate,jdbcType=DATE},
+      </if>
+      <if test="zhanghaostatu != null" >
+        #{zhanghaostatu,jdbcType=INTEGER},
+      </if>
+      <if test="liulanqi != null" >
+        #{liulanqi,jdbcType=VARCHAR},
+      </if>
+      <if test="updatexitong != null" >
+        #{updatexitong,jdbcType=VARCHAR},
+      </if>
+      <if test="caozuoxiangqing != null" >
+        #{caozuoxiangqing,jdbcType=VARCHAR},
+      </if>
+      <if test="rizhinumber != null" >
+        #{rizhinumber,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.jk.pojo.User" >
+    update x_user
+    <set >
+      <if test="username != null" >
+        username = #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="userpwd != null" >
+        userpwd = #{userpwd,jdbcType=VARCHAR},
+      </if>
+      <if test="userphone != null" >
+        userphone = #{userphone,jdbcType=VARCHAR},
+      </if>
+      <if test="userneirong != null" >
+        userneirong = #{userneirong,jdbcType=VARCHAR},
+      </if>
+      <if test="logindate != null" >
+        logindate = #{logindate,jdbcType=DATE},
+      </if>
+      <if test="zhanghaostatu != null" >
+        zhanghaostatu = #{zhanghaostatu,jdbcType=INTEGER},
+      </if>
+      <if test="liulanqi != null" >
+        liulanqi = #{liulanqi,jdbcType=VARCHAR},
+      </if>
+      <if test="updatexitong != null" >
+        updatexitong = #{updatexitong,jdbcType=VARCHAR},
+      </if>
+      <if test="caozuoxiangqing != null" >
+        caozuoxiangqing = #{caozuoxiangqing,jdbcType=VARCHAR},
+      </if>
+      <if test="rizhinumber != null" >
+        rizhinumber = #{rizhinumber,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where userid = #{userid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.jk.pojo.User" >
+    update x_user
+    set username = #{username,jdbcType=VARCHAR},
+      userpwd = #{userpwd,jdbcType=VARCHAR},
+      userphone = #{userphone,jdbcType=VARCHAR},
+      userneirong = #{userneirong,jdbcType=VARCHAR},
+      logindate = #{logindate,jdbcType=DATE},
+      zhanghaostatu = #{zhanghaostatu,jdbcType=INTEGER},
+      liulanqi = #{liulanqi,jdbcType=VARCHAR},
+      updatexitong = #{updatexitong,jdbcType=VARCHAR},
+      caozuoxiangqing = #{caozuoxiangqing,jdbcType=VARCHAR},
+      rizhinumber = #{rizhinumber,jdbcType=VARCHAR}
+    where userid = #{userid,jdbcType=INTEGER}
+  </update>
+</mapper>
